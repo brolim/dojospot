@@ -6,10 +6,10 @@ Feature: Register attendance of confirmed users
 
 	Scenario: 
 
-		Given I am logged in as "bruno"
-		And there is a session with title "my session" scheduled for today
-		And there are 3 people confirmed in a session
-		And I am on the session detail page
+		Given there is a session with title "my session" scheduled for today
+		And there are 3 people confirmed in the session "my session"
+		And I am logged in as "bruno"
+		And I reach the detail page of session "my session"
 		When I check attendance_checkbox on user 1
 		And I check attendance_checkbox on user 2
 		And I click register_attendance button

@@ -18,6 +18,12 @@ Given /^the following sessions exist:$/ do |table|
 	end
 end
 
+Given /^I reach the detail page of session "([^"]*)"$/ do |title|
+  id = DojoSession.find_by_title(title).id
+  visit "/dojo_sessions/#{id}"
+end
+
+
 Given /^there is a session scheduled for (.*)$/ do |date|
 	Given %{there is a session with title "any one" scheduled for #{date}}
 end
@@ -37,8 +43,12 @@ Given /^I am confirmed in the session "([^\"]*)"$/ do |title|
   end
 end
 
-Given /^there are (\d+) people confirmed in a session$/ do |how_many|
-  pending # express the regexp above with the code you wish you had
+Given /^there are (\d+) people confirmed in the session "([^\"]*)"$/ do |how_many, title|
+  s = DojoSession.find_by_title(title)
+  how_many.to_i.times do 
+  	s.confirmed_users << Factory.create(:user)
+  end
+  s.save
 end
 
 
