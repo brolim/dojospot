@@ -22,6 +22,8 @@ Given /^there is a session scheduled for (.*)$/ do |date|
 	Given %{there is a session with title "any one" scheduled for #{date}}
 end
 
+
+
 Given /^there is a session with title "(.*)" scheduled for (.*)$/ do |title, date|
 	real_date = calculate_relative_date(date)
 	Factory.create :dojo_session, :title=> title, :date=>real_date  
@@ -35,6 +37,9 @@ Given /^I am confirmed in the session "([^\"]*)"$/ do |title|
   end
 end
 
+Given /^there are (\d+) people confirmed in a session$/ do |how_many|
+  pending # express the regexp above with the code you wish you had
+end
 
 
 
@@ -48,6 +53,14 @@ When /^I fill the proposal with "([^\"]*)", "([^\"]*)", "([^\"]*)", "([^\"]*)", 
 	
 	fill_in "dojo_session[date]", :with => date.to_s
 	fill_in "dojo_session[time]", :with => time
+end
+
+When /^I check attendance_checkbox on user (\d+)$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I click register_attendance button$/ do
+  pending # express the regexp above with the code you wish you had
 end
 
 
@@ -102,3 +115,16 @@ Then /^I should see the sessions details in this specific order (.*), (.*), (.*)
 	dojo[1].content.should == b
 	dojo[2].content.should == c
 end
+
+Then /^I should see a successful message$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see attendees' names in bold font$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see attendees' checkboxes checked$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
